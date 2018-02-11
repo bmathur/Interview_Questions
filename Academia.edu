@@ -1,0 +1,50 @@
+/*
+This Question is from Academia Interview.
+Question:
+Generate all the lowest-valued valid integer inputs that exhaustively test all combinations of 4 conditionals. 
+Conditionals: contains a 7, is a multiple of 7, contains a 3, and is a multiple of 3.  
+*/
+
+import java.util.Hashtable;
+import java.util.Map;
+public class MyClass {
+    public static void main(String args[]) {
+         Map map= new Hashtable();
+        int cnt =0;
+        for(int i =0; i<500;i++)
+        {
+            if(cnt<16)
+            {
+            String result = m_5(i)+m_7(i)+c_5(i)+c_7(i);
+            if (!(map.containsKey(result))) {
+                map.put(result, i);
+                cnt++;
+                //only need to print numbers
+                System.out.println("number:"+i+"status"+result);
+            }
+            }
+            else{
+                break;
+            }
+        }
+       
+    }
+    
+    public static String m_5(int num)
+    {
+        return(((num%5)==0)?"1":"0");
+    }
+     public static String m_7(int num)
+    {
+        return(((num%7)==0)?"1":"0");
+    }
+     public static String c_5(int num)
+    {
+        return((String.valueOf(num).contains("5"))?"1":"0");
+    }
+     public static String c_7(int num)
+    {
+        return((String.valueOf(num).contains("7"))?"1":"0");
+    }
+    
+}
